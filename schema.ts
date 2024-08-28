@@ -58,6 +58,12 @@ export interface Instrument {
   symbol: string, // BTCUSDT
 }
 
+
+export interface SubmittedOrder {
+  external_id: string;
+}
+
+
 export const OrderSchema = new mongoose.Schema(
   {
     instrument_type: {
@@ -133,5 +139,5 @@ export const OrderSchema = new mongoose.Schema(
   },
 );
 
-export type Order = mongoose.InferSchemaType<typeof OrderSchema> & mongoose.Document;
+export type Order = mongoose.InferSchemaType<typeof OrderSchema> & mongoose.Document & SubmittedOrder;
 export const Order = mongoose.model('Order', OrderSchema);

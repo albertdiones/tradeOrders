@@ -1,5 +1,5 @@
 import { Model } from "mongoose";
-import { Order, OrderDirection, OrderStatus, OrderType } from "./schema";
+import { Order, OrderDirection, OrderStatus, OrderType, type SubmittedOrder } from "./schema";
 import { Logger } from "add_logger";
 
 
@@ -19,14 +19,14 @@ export interface OrderHandler {
      * 
      * @param tradeIntent 
      */
-    checkOrder(order: Order): Promise<Order | null>;
+    checkOrder(order: SubmittedOrder): Promise<Order | null>;
 
     
 
     /**
      * Cancel a singular order on the exchange
      */
-    cancelOrder(order: Order): Promise<Order>;
+    cancelOrder(order: SubmittedOrder): Promise<Order>;
 
     /**
      * Cancel all active orders on the exchange
