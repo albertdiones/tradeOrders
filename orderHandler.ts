@@ -17,16 +17,14 @@ export interface OrderHandler {
      * check the status of the order on the exchange,
      * update the Order document if applicable
      * 
-     * @param tradeIntent 
      */
     checkOrder(order: SubmittedOrder): Promise<Order | null>;
 
     /**
      * fetches all the orders from the exchange
      * 
-     * @param tradeIntent 
      */
-    getActiveOrders(order: SubmittedOrder): Promise<Order[]>;
+    getActiveOrders(): Promise<Order[]>;
 
     /**
      * Cancel a singular order on the exchange
