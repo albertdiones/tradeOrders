@@ -49,6 +49,13 @@ export class TestOrderHandler implements OrderHandler {
         this.candles = candleSchema;
         this.logger = params.logger;
     }
+    getActiveOrders(): Promise<Order[]> {
+        return Order.find(
+            {
+                status: { $in: ["submitted", "pending"] }
+            }
+        );
+    }
 
     submitOrder(order: Order): Promise<Order> {
         this.logger.info(`Submitting order ${order._id}`);
@@ -133,11 +140,7 @@ export class TestOrderHandler implements OrderHandler {
     }
 
     async cancelAllOrders(): Promise<Order[]> {
-        return Order.find(
-            {
-                status: { $in: ["submitted", "pending"] }
-            }
-        ).then(
+        return this.getActiveOrders().then(
             (orders: Order[]) => {
                 this.logger.info(`Found ${orders.length} orders to cancel`);
                 return Promise.all(
