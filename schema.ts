@@ -126,7 +126,7 @@ export const OrderSchema = new mongoose.Schema(
       default: null,
     },
     trades: {
-      type: Array<Object>,
+      type: [mongoose.Schema.Types.Mixed],
       default: null
     },
     full_data: {
