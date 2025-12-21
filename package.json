@@ -1,8 +1,9 @@
 {
   "name": "tradeorders",
   "version": "0.0.1",
-  "module": "orderHandler.ts",
-  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": ["dist"],
   "devDependencies": {
     "@types/bun": "latest"
   },
@@ -10,7 +11,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "add_logger": "^0.0.23",
+    "add_logger": "^0.0.34",
     "mongoose": "^8.5.4"
   }
 }
